@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <title>example</title>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function()
+    {
+		
+        $('#send').click(function()
+        {
+           var data = {
+		param0 : $('#param0').val(),
+		param1 : $('#param1').val(),
+		param2 : $('#param2').val()
+	};
+ 
+            $.ajax({
+                type: "post",
+                url: "send.php",
+                data: data,
+                success: function(data, dataType)
+                {
+                    alert(data);
+				
+				    if(data == "complete"){
+				        document.forms[0].elements[0].value="";
+				        document.forms[0].elements[1].value="";
+			            document.forms[0].elements[2].value="";
+				    }
+                },
+                error: function()
+                {
+                alert('送信失敗');
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+</head>
+<body>
+<form id="contactForm" name="contactForm" method="post" >
+<ul>
+<li><input type="text" id="param0" name="param0" placeholder="param0"></li>
+<li><input type="text" id="param1" name="param1" placeholder="param1" ></li>
+<li><textarea name="param2" id="param2" placeholder="param2" ></textarea></li>
+</ul>
+<p class="more"><input id="send" type="submit" value="送る"></p>
+</form>
+</body>
+</html>
