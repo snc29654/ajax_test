@@ -12,10 +12,10 @@
         $('#send').click(function()
         {
            var data = {
-		param0 : $('#param0').val(),
-		param1 : $('#param1').val(),
-		param2 : $('#param2').val()
-	};
+		        param0 : $('#param0').val(),
+		        param1 : $('#param1').val(),
+		        param2 : $('#param2').val()
+	        };
  
             $.ajax({
                 type: "post",
@@ -33,11 +33,39 @@
                 },
                 error: function()
                 {
-                alert('送信失敗');
+                    alert('送信失敗');
                 }
             });
             return false;
         });
+
+        $('#logread').click(function()
+        {
+           var data = {
+		        param0 : $('#param0').val(),
+		        param1 : $('#param1').val(),
+		        param2 : $('#param2').val()
+	        };
+ 
+            $.ajax({
+                type: "post",
+                url: "logread.php",
+                data: data,
+                success: function(data, dataType)
+                {
+                    document.getElementById( "phplog" ).value = data ;
+				
+                },
+                error: function()
+                {
+                    alert('送信失敗');
+                }
+            });
+            return false;
+        });
+
+
+
     });
     </script>
 </head>
@@ -46,9 +74,11 @@
 <ul>
 <li><input type="text" id="param0" name="param0" placeholder="param0"></li>
 <li><input type="text" id="param1" name="param1" placeholder="param1" ></li>
-<li><textarea name="param2" id="param2" placeholder="param2" ></textarea></li>
+<li><textarea name="param2" id="param2" placeholder="param2" ></textarea></li>  
+<li><textarea name="phplog" rows="20" cols="80" id="phplog" placeholder="phplog" ></textarea></li>
 </ul>
 <p class="more"><input id="send" type="submit" value="送る"></p>
+<p class="more"><input id="logread" type="submit" value="ログ読み出し"></p>
 </form>
 </body>
 </html>
