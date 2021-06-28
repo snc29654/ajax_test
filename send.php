@@ -28,7 +28,10 @@ if ($errorflag == 1)
 }
 else
 {
+	file_put_contents("../php_log.txt", $param0."\n",FILE_APPEND);
+	file_put_contents("../php_log.txt", $param1."\n",FILE_APPEND);
+	file_put_contents("../php_log.txt", $param2."\n",FILE_APPEND);
    
-   echo "complete";
+   	echo "complete";
 }
 ?>
