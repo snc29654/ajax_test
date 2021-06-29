@@ -36,16 +36,31 @@
                     alert('送信失敗');
                 }
             });
+
+           var data = "dummy"
+ 
+            $.ajax({
+                type: "post",
+                url: "logread.php",
+                data: data,
+                success: function(data, dataType)
+                {
+                    document.getElementById( "phplog" ).value = data ;
+				
+                },
+                error: function()
+                {
+                    alert('送信失敗');
+                }
+            });
+
+
             return false;
         });
 
         $('#logread').click(function()
         {
-           var data = {
-		        param0 : $('#param0').val(),
-		        param1 : $('#param1').val(),
-		        param2 : $('#param2').val()
-	        };
+           var data = "dummy"
  
             $.ajax({
                 type: "post",
