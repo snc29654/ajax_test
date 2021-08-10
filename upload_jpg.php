@@ -3,6 +3,15 @@
  <p><input type="submit" value="upload" /></p>
 </form>
 <?php
+session_start();
+
+if(!isset($_SESSION["user_name"])) {
+	$no_login_url = "index.php";
+	header("Location: {$no_login_url}");
+	exit;
+}
+?>
+<?php
 if($_SERVER["REQUEST_METHOD"] === "POST"){
  if($_FILES["userfile"]["error"] == UPLOAD_ERR_OK){
   $tempfile = $_FILES["userfile"]["tmp_name"];
