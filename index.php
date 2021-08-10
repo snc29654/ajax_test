@@ -7,7 +7,7 @@ if(isset($_POST["login"])) {
 
 	if($_POST["user_name"] == "guest" && $_POST["password"] == "guest_guest") {
 		$_SESSION["user_name"] = $_POST["user_name"];
-		$login_success_url = "ajax_test.html";
+		$login_success_url = "ajax_test.php";
 		header("Location: {$login_success_url}");
 		exit;
 	}
